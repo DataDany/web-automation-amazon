@@ -55,21 +55,6 @@ public final class TestConfig {
         return v;
     }
 
-    private static String opt(String key, String def) {
-        String v = P.getProperty(key);
-        return (v == null || v.isBlank()) ? def : v.trim();
-    }
-
-    private static int intOpt(String key, int def) {
-        String v = P.getProperty(key);
-        if (v == null || v.isBlank()) return def;
-        try {
-            return Integer.parseInt(v.trim());
-        } catch (NumberFormatException e) {
-            throw new IllegalStateException("Property '" + key + "' must be int, got: " + v);
-        }
-    }
-
     private static String normalizeUrl(String url) {
         return url.endsWith("/") ? url.substring(0, url.length() - 1) : url;
     }
