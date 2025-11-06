@@ -18,7 +18,7 @@ public class SearchSteps extends BaseSteps {
 
     @When("I search for cards")
     public void i_search_for() {
-        homePage.typeItemToSearchTab(LAPTOP);
+        homePage.typeItemToSearchTab(CARDS);
         homePage.clickSubmitSearchButton();
     }
 
