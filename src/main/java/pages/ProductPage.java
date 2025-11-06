@@ -6,7 +6,7 @@ import pages.selectors.ProductPageSelectors;
 
 public class ProductPage extends ProductPageSelectors {
 
-    private final String ZERO = "0";
+    private final String ZERO_CART = "0";
 
     @Step("Click add to cart button")
     public void clickAddToCartButton() {
@@ -26,7 +26,7 @@ public class ProductPage extends ProductPageSelectors {
 
     @Step("Number products should be zero")
     public void numberProductsShouldBeZero(String beforeAddToCart) {
-        Assert.assertEquals(beforeAddToCart, ZERO);
+        Assert.assertEquals(beforeAddToCart, ZERO_CART);
     }
 
     @Step("Number of products should be equal with products in cart")

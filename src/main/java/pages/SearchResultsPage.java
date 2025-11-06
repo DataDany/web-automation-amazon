@@ -32,7 +32,7 @@ public class SearchResultsPage extends SearchResultsPageSelectors {
     }
 
     @Step("Get product names")
-    public List<String> getProductsNames() {
+    public List<String> getProductNames() {
         checkVisibilityOfElements(productCardsTitles);
         List<String> names = new ArrayList<>(productCardsTitles.size());
         productCardsTitles.forEach(el -> {

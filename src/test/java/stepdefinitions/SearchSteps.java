@@ -24,7 +24,7 @@ public class SearchSteps extends BaseSteps {
 
     @Then("I should see non-empty product names and prices and counts match")
     public void i_should_see_non_empty_product_names_prices_and_counts_match() {
-        List<String> names = searchResultsPage.getProductsNames();
+        List<String> names = searchResultsPage.getProductNames();
         List<String> prices = searchResultsPage.getProductPrices();
         searchResultsPage.shouldReturnNonEmptyProductNames(names);
         searchResultsPage.shouldReturnNonEmptyProductPrices(prices);
