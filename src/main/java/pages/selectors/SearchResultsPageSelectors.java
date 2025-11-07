@@ -14,9 +14,6 @@ public class SearchResultsPageSelectors extends BasePage {
     @FindBy(css = "div[role='listitem'] h2 span")
     protected List<WebElement> productCardsTitles;
 
-    @FindBy(css = "div[role='listitem'] a > span.a-price > .a-offscreen")
-    protected List<WebElement> productPrices;
-
     @FindBy(css = "div[role='listitem'] a > span.a-price ")
     protected List<WebElement> prices;
 

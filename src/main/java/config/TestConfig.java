@@ -13,9 +13,6 @@ public final class TestConfig {
         overrideWithEnv();
     }
 
-    private TestConfig() {
-    }
-
     private static void loadFromClasspath(String name) {
         try (InputStream is = TestConfig.class.getClassLoader().getResourceAsStream(name)) {
             if (is == null) throw new IllegalStateException(name + " not found on classpath");
