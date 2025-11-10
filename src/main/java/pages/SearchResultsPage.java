@@ -28,12 +28,6 @@ public class SearchResultsPage extends SearchResultsPageSelectors {
         assertTrue(prices.stream().allMatch(s -> s != null && !s.isBlank()), "Empty prices");
     }
 
-    @Step("Names and prices counts should match")
-    public void namesAndPricesCountsShouldMatch(List<String> titles, List<String> prices) {
-        System.out.println(prices.size() + " " + titles.size());
-        assertEquals(prices.size(), titles.size(), "Difference between prices and titles");
-    }
-
     @Step("Get product names")
     public List<String> getProductNames() {
         checkVisibilityOfElements(productCardsTitles);
