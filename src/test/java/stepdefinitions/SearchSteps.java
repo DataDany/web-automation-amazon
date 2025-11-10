@@ -18,6 +18,7 @@ public class SearchSteps extends BaseSteps {
 
     @When("I search for cards")
     public void i_search_for() {
+        homePage.clickDismissButtonIfExist();
         homePage.typeItemToSearchTab(CARDS);
         homePage.clickSubmitSearchButton();
     }
@@ -32,8 +33,7 @@ public class SearchSteps extends BaseSteps {
 
     @When("I open the first product from results")
     public void i_open_the_first_product_from_results() {
-        firstProductTitle = searchResultsPage.getFirstProductTitle();
-        searchResultsPage.clickOnFirstProduct();
+        firstProductTitle = searchResultsPage.clickFirstTitleWithAddToCartButton();
     }
 
     @Then("The cart should contain that product")

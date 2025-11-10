@@ -1,17 +1,20 @@
 package pages;
 
 import io.qameta.allure.Step;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
 import pages.selectors.SearchResultsPageSelectors;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 public class SearchResultsPage extends SearchResultsPageSelectors {
+
+    private final String ADD_TO_CART_SELECTOR = "button[name='submit.addToCart']";
+    private final String CARD_TITLE_SELECTOR = "div[role='listitem'] h2 span";
 
     @Step("Should return non empty product names")
     public void shouldReturnNonEmptyProductNames(List<String> titles) {
@@ -52,6 +55,20 @@ public class SearchResultsPage extends SearchResultsPageSelectors {
             proPrices.add(price);
         });
         return proPrices;
+    }
+
+    @Step("Click first title with add to cart button")
+    public String clickFirstTitleWithAddToCartButton() {
+        for (WebElement card : productCardContainers) {
+            if (!exists(card, getElementByCSS(ADD_TO_CART_SELECTOR))) continue;
+
+            WebElement title = card.findElement(getElementByCSS(CARD_TITLE_SELECTOR));
+            checkVisibilityOfElement(title);
+            String titleText = getTextFromWebElement(title);
+            clickElement(title);
+            return titleText;
+        }
+        throw new NoSuchElementException("Can't find card with add to cart button.");
     }
 
     @Step("Get first product title")

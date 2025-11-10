@@ -17,4 +17,7 @@ public class HomePageSelectors extends BasePage {
 
     @FindBy(id = "nav-cart")
     protected WebElement navCart;
+
+    @FindBy(css= "input[data-action-type='DISMISS']")
+    protected WebElement dismissButton;
 }

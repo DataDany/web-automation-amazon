@@ -1,7 +1,6 @@
 package core;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -37,6 +36,19 @@ public abstract class BasePage {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
+    protected boolean existCheck(WebElement element) {
+        try {
+            wait.until(ExpectedConditions.visibilityOf(element));
+            return true;
+        } catch (TimeoutException | NoSuchElementException | StaleElementReferenceException e) {
+            return false;
+        }
+    }
+
+    protected boolean exists(WebElement parent, By locator) {
+        return !parent.findElements(locator).isEmpty();
+    }
+
     protected WebElement getFirstElement(List<WebElement> elements) {
         checkVisibilityOfElements(elements);
         return elements.getFirst();
@@ -44,5 +56,9 @@ public abstract class BasePage {
 
     protected String getTextFromWebElement(WebElement element) {
         return element.getText().trim();
+    }
+
+    protected By getElementByCSS(String cssSelector) {
+        return By.cssSelector(cssSelector);
     }
 }

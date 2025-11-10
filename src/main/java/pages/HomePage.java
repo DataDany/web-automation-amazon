@@ -38,4 +38,11 @@ public class HomePage extends HomePageSelectors {
     public void clickSubmitSearchButton() {
         clickElement(submitSearch);
     }
+
+    @Step("Click dismiss button")
+    public void clickDismissButtonIfExist() {
+        if (existCheck(dismissButton)) {
+            clickElement(dismissButton);
+        }
+    }
 }
